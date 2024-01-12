@@ -1,0 +1,13 @@
+[Unit]
+Description=Visual Studio Code Tunnel
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=10
+ExecStart=/usr/share/code/bin/code-tunnel "--verbose" "--cli-data-dir" "/home/jupyter/.vscode/cli" "serve-web" "--host" "0.0.0.0" "--port" "8000" "--without-connection-token" "--accept-server-license-terms"
+
+[Install]
+WantedBy=default.target
